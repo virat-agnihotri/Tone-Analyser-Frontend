@@ -1,11 +1,18 @@
 import axios from "axios";
-
+// for deployment
 const api = axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: import.meta.env.VITE_API_URL,
     headers: {
         "Content-Type": "application/json"
     }
 });
+
+// const api = axios.create({
+//     baseURL: "http://localhost:8000/api",
+//     headers: {
+//         "Content-Type": "application/json"
+//     }
+// });
 
 export const createSession = async (driverName, trackName) => {
     const response = await api.post("/sessions/", {
